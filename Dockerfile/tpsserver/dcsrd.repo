@@ -1,0 +1,7 @@
+[dcsrd]
+name=DCSRD Repository for CentOS 7
+metadata_expire=60
+baseurl=http://dcs-buildmaster.sjc1/dcsrepo/CentOS/7/DCSRD
+enabled=1
+gpgcheck=0
+

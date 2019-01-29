@@ -1,0 +1,15 @@
+[Unit]
+Description=tpsserver-alpha
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/tpsserver/alpha/
+ExecStartPre=/bin/sh -c 'rm -f /opt/tpsserver/alpha/tpsserver-1.0.SNAPSHOT/RUNNING_PID'
+ExecStart=/opt/tpsserver/alpha/tpsserver-1.0.SNAPSHOT/bin/tpsserver -Dhttp.port=9005
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

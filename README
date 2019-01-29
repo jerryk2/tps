@@ -1,0 +1,27 @@
+### all volume and setting mapping ###
+all container
+/opt/tftpboot:/tftpboot
+
+tps-tpsserver
+tpsserver-prod.service:/etc/systemd/system/server-prod.service
+tpsserver-alpha.service:/etc/systemd/system/tpsserver-alpha.service
+
+tps-httpd
+tps.conf:/etc/httpd/conf.d/tps.conf
+
+tps-tftp
+tftpd.map:/etc/tftpd.map
+tftp:/etc/xinetd.d/tftp
+
+tps-nfs
+exports:/etc/exports
+
+tps-samba
+smb.conf:/etc/samba/smb.conf
+========
+
+#### run tps container as service in Docker host ####
+tps.service:/etc/systemd/system/tps.service
+$ systemctl daemon-reload
+$ systemctl status tps
+========

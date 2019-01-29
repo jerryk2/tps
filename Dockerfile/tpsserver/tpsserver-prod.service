@@ -1,0 +1,14 @@
+[Unit]
+Description=tpsserver-prod
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/tpsserver/production/
+ExecStartPre=/bin/sh -c 'rm -f /opt/tpsserver/production/tpsserver-1.0.SNAPSHOT/RUNNING_PID'
+ExecStart=/opt/tpsserver/production/tpsserver-1.0.SNAPSHOT/bin/tpsserver -Dhttp.port=9000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

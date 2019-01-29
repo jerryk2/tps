@@ -1,0 +1,15 @@
+[Unit]
+Description=tps
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=/usr/bin/docker-compose -f /opt/tps/docker-compose.yml down -v
+ExecStartPre=/usr/bin/docker-compose -f /opt/tps/docker-compose.yml rm -v
+ExecStartPre=-/bin/bash -c 'docker rm -v $(docker ps -aq | gre tps)'
+ExecStart=/usr/bin/docker-compose -f /opt/tps/docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f /opt/tps/docker-compose.yml  down -v
+
+[Install]
+WantedBy=multi-user.target
